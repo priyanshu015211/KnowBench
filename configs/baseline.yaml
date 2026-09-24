@@ -1,0 +1,53 @@
+# KnowBench baseline experiment configuration.
+# This file is a protocol template, not an executed result.
+
+experiment:
+  name: rag_vs_okf_baseline
+  version: "0.1"
+  seed: 42
+  benchmark_version: "0.1"
+
+corpus:
+  domain: software_security
+  snapshot: TBD
+  source_manifest: data/SOURCES.md
+
+llm:
+  provider: TBD
+  model: TBD
+  temperature: 0
+  max_output_tokens: 512
+
+rag:
+  strategy: dense
+  embedding_model: TBD
+  chunking:
+    method: deterministic_recursive
+    chunk_size: TBD
+    overlap: TBD
+  top_k: 5
+
+okf:
+  spec_version: "0.2"
+  retrieval_strategy: lexical_plus_link_traversal
+  max_traversal_depth: 2
+  max_concepts: 8
+
+prompt:
+  version: "v0.1"
+  require_evidence_ids: true
+  require_abstention_when_unsupported: true
+
+metrics:
+  retrieval:
+    - recall_at_5
+    - mrr
+  answer:
+    - fact_correctness
+    - faithfulness
+    - abstention_accuracy
+  efficiency:
+    - end_to_end_latency_ms
+    - retrieval_latency_ms
+    - input_tokens
+    - output_tokens
