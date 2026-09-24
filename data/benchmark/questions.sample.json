@@ -1,0 +1,80 @@
+{
+  "benchmark_version": "0.1",
+  "status": "illustrative_only",
+  "description": "Synthetic examples used to validate the Phase-1 benchmark schema. These are not research results.",
+  "questions": [
+    {
+      "question_id": "SYN-DL-001",
+      "category": "direct_lookup",
+      "difficulty": "easy",
+      "question": "What severity was assigned to Example Vulnerability A?",
+      "answerable": true,
+      "gold_answer": "High.",
+      "gold_facts": ["Example Vulnerability A has High severity."],
+      "gold_evidence_ids": ["SYN-A#severity"],
+      "sources": ["synthetic://knowbench/example-a"]
+    },
+    {
+      "question_id": "SYN-PH-001",
+      "category": "paraphrase",
+      "difficulty": "easy",
+      "question": "Which software release contains the fix for Example Vulnerability B?",
+      "answerable": true,
+      "gold_answer": "Release 4.2.",
+      "gold_facts": ["Release 4.2 contains the fix for Example Vulnerability B."],
+      "gold_evidence_ids": ["SYN-B#fixed-version"],
+      "sources": ["synthetic://knowbench/example-b"]
+    },
+    {
+      "question_id": "SYN-MH-001",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "question": "Which component depends on Service X and therefore inherits its outage impact?",
+      "answerable": true,
+      "gold_answer": "Component Y.",
+      "gold_facts": ["Component Y depends on Service X.", "An outage of Service X affects Component Y."],
+      "gold_evidence_ids": ["SYN-X#dependency", "SYN-Y#outage-impact"],
+      "sources": ["synthetic://knowbench/example-x", "synthetic://knowbench/example-y"]
+    },
+    {
+      "question_id": "SYN-TM-001",
+      "category": "temporal",
+      "difficulty": "medium",
+      "question": "What mitigation was documented as of 2026-03-01?",
+      "answerable": true,
+      "gold_answer": "Upgrade to release 5.1.",
+      "gold_facts": ["As of 2026-03-01, the documented mitigation was to upgrade to release 5.1."],
+      "gold_evidence_ids": ["SYN-T#mitigation-2026-03-01"],
+      "sources": ["synthetic://knowbench/example-temporal"]
+    },
+    {
+      "question_id": "SYN-UA-001",
+      "category": "unanswerable",
+      "difficulty": "easy",
+      "question": "What undisclosed vulnerability will be announced next year?",
+      "answerable": false,
+      "gold_answer": {
+        "type": "abstain",
+        "reason": "The corpus contains no evidence about future undisclosed vulnerabilities."
+      },
+      "gold_facts": [],
+      "gold_evidence_ids": [],
+      "sources": []
+    },
+    {
+      "question_id": "SYN-CT-001",
+      "category": "contradictory",
+      "difficulty": "hard",
+      "question": "Do the two dated records agree on the affected version range?",
+      "answerable": true,
+      "gold_answer": "No. The records conflict: one lists 2.0–2.3 and the other lists 2.0–2.4.",
+      "gold_facts": [
+        "Record A lists versions 2.0–2.3.",
+        "Record B lists versions 2.0–2.4.",
+        "The records therefore conflict."
+      ],
+      "gold_evidence_ids": ["SYN-C#record-a", "SYN-C#record-b"],
+      "sources": ["synthetic://knowbench/example-conflict-a", "synthetic://knowbench/example-conflict-b"]
+    }
+  ]
+}
