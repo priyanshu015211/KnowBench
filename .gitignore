@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.vscode/
+.idea/
+
+# Generated experiment artifacts
+artifacts/
+runs/
+results/
+logs/
+*.jsonl
+
+# Local indexes / databases
+*.db
+*.sqlite
+vector_store/
+
+# Local source snapshots that may be large or license-restricted
+raw_corpus/
