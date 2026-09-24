@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowbench.local/schema/benchmark.schema.json",
+  "title": "KnowBench Benchmark",
+  "type": "object",
+  "required": ["benchmark_version", "questions"],
+  "properties": {
+    "benchmark_version": {"type": "string"},
+    "status": {"type": "string"},
+    "description": {"type": "string"},
+    "questions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/question"}
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": [
+        "question_id",
+        "category",
+        "difficulty",
+        "question",
+        "answerable",
+        "gold_answer",
+        "gold_facts",
+        "gold_evidence_ids",
+        "sources"
+      ],
+      "properties": {
+        "question_id": {"type": "string", "minLength": 1},
+        "category": {
+          "enum": [
+            "direct_lookup",
+            "paraphrase",
+            "multi_hop",
+            "relationship",
+            "temporal",
+            "unanswerable",
+            "contradictory",
+            "distractor"
+          ]
+        },
+        "difficulty": {"enum": ["easy", "medium", "hard"]},
+        "question": {"type": "string", "minLength": 5},
+        "answerable": {"type": "boolean"},
+        "gold_answer": {},
+        "gold_facts": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "gold_evidence_ids": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "sources": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}
